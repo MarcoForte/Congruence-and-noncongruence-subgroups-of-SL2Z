@@ -17,8 +17,8 @@ def egcd(a, b):
         g, y, x = egcd(b % a, a)
         return (g, x - (b // a) * y, y)
         
-N = 21
-A = Matrix(18,14,4,2)
+N = 3
+A = Matrix(8,47,30,8)
 
 a, b, c, d = A.a, A.b, A.c, A.d 
 k = 1
