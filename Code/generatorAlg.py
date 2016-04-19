@@ -36,4 +36,3 @@ M = inv@A
 
 expan.append(M.b)
 print(expan)
-    
