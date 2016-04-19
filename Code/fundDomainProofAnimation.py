@@ -17,8 +17,8 @@ def plotOutline():
     plt.plot((-0.5, -0.5), (np.sqrt(3)/2, 5), 'k-')
     plt.plot((0.5, 0.5), (np.sqrt(3)/2, 5), 'k-')
     plt.axhline(y=0,color = 'k')
-    plt.xlim(-3.5,3)
-    plt.ylim(0,3)
+    plt.xlim(-2,2)
+    plt.ylim(0,2.1)
 
     
 #Check if point outside unit circle
@@ -29,23 +29,27 @@ def inXlim(x):
     return np.abs(x)<=0.5
     
 # Draw points to consider
-#xPoints = np.linspace(-1.5,1.5,7)
-#yPoints = np.linspace(0.25,1.5,6)
-#points = np.transpose([np.tile(xPoints, len(yPoints)), np.repeat(yPoints, len(xPoints))])
-points = np.array([[np.pi/2,0.137], [np.pi/3,0.45],  [-np.sqrt(2)/2,0.11],  [-0.9,0.8]])
+xPoints = np.linspace(-1.5,1.5,7)
+yPoints = np.linspace(0.25,1.5,6)
+points = np.transpose([np.tile(xPoints, len(yPoints)), np.repeat(yPoints, len(xPoints))])
+#points = np.array([[np.pi/2,0.137], [np.pi/3,0.45],  [-np.sqrt(2)/2,0.11],  [-0.9,0.8]])
+#points = np.array([[0.6,0.1],[0.6,0.2],[0.6,0.4],[0.6,0.6],[0.6,0.8],[0.6,1.0],[0.6,1.2],[0.6,1.5]])
+#pointColors = ['red','black','blue','green']
 
-pointColors = ['red','black','blue','green']
 # Plots points and colours
 def plotPoints(points,title):
     plotOutline()
     for i, point in enumerate(points):
         x , y = point[0], point[1]
-        plt.plot(x,y, 'o',color = pointColors[i])
+        if(inUnitCircle(x,y)):
+            plt.plot(x,y,'bd',markersize= 9)
+        else:
+            plt.plot(x,y,'ro',markersize= 9)
     plt.title(title)
     fig = plt.gcf()
-    fig.savefig("image"+str(np.random.randint(1000)) + title+".png")
+    fig.savefig(str(np.random.randint(1000))+title+"1.png",dpi = 1000)
     plt.show()
-def T(x,y,n): return  x + n, y
+def T(x,y,n=1): return  x + n, y
 def S(x,y):  return (-x/(x**2+y**2)),  (y/(x**2+y**2))
 # Algorithm to move points
 ''' 
@@ -75,65 +79,17 @@ def algorithmST(points):
         point[0], point[1] = x, y
     plotPoints(points,"Step 2, apply S")
     return points
-#ListT to matrix T^(listT[-1]) S T^(listT[-2]) ... ST^(listT[1])
-def algorithmSTSingle(x,y):
-    listT = []
-    while(not ( not inUnitCircle(x,y) and inXlim(x))):
-        listT.append(0)
-        while(np.abs(x) > 0.5):
-            if(x<0):
-                listT[-1] +=1
-                x , y = T(x,y,1)
-            else:
-                listT[-1] -=1
-                x, y= T(x,y,-1)
-    # Invert circle
-        if(inUnitCircle(x,y)):
-            x, y = S(x,y)
-    return x,y , listT[::-1]
 
-#plotPoints(points, "Initial Postions")
-#
-#for i in range(2):
-#    points = algorithmST(points)
- 
-       
-'''
-Find representation in terms of S,T by using algorithmST, not sure but I think
-round off errors might make this unusable at times,
-g is a matrix in sltz
-'''
-def decomposeST(g):
-    x = 0
-    y = 2
-    gx, gy = transform(g,x,y)
-    return algorithmSTSingle(gx,gy)
-def transform(g,x,y):
-    a, b, c, d = g.a, g.b, g.c, g.d
-    denominator = (c*x+d)**2 + (c*y)**2    
-    gx = (a*c*(x**2 + y**2) + x*(a*d +b*c) +b*d)*1/denominator
-    gy = y/denominator
-    return gx, gy
-#M = sl2z.Matrix(13,37,7,20)
-M = Matrix(60,83,13,18)
-Tm= Matrix(1,1,0,1) 
-Sm = Matrix(0,-1,1,0)
-
-def constructMatrix(listT):
-    mat = sl2z.eye
-    for power in listT:
-        mat = mat @Tm**(power)@Sm
-    mat = mat  @Sm**(3)
-    return mat
-        
-x,y , listT = decomposeST(M)
-print(x,y,listT)
-gamma = constructMatrix(listT)    
-print((gamma.inv()).entries())
-
-        
-        
-        
+#plotPoints(points,"InitialPositions")
+#points = algorithmST(points)
+#algorithmST(points)
+plotPoints(points,"Initial Positions")
+#Tpoints = [T(point[0],point[1]) for point in points]
+#plotPoints(Tpoints,"After transforming by T")
+Spoints = [S(point[0],point[1]) for point in points]
+plotPoints(Spoints,"After transforming by S")
+#plt.title("Actions of S and T on a line")
+#plt.savefig("Actions of S and T on a line.png",dpi =1000)
         
         
         
