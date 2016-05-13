@@ -1,0 +1,24 @@
+\select@language {english}
+\contentsline {chapter}{Contents}{ii}{chapter*.1}
+\contentsline {chapter}{\numberline {1}Preliminary group theory}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Group Actions}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Isomorphism Theorems}{2}{section.1.2}
+\contentsline {section}{\numberline {1.3}Jordan-Holder Theorem}{2}{section.1.3}
+\contentsline {section}{\numberline {1.4}Free groups}{3}{section.1.4}
+\contentsline {chapter}{\numberline {2}The special linear group $SL_2(\mathbb {Z})$}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}M\IeC {\"o}bius transformations}{7}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Group action of $SL_2(\mathbb {Z})$ on the upper half plane}{8}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Geometric proof that $S,T$ generate $SL_2(\mathbb {Z})$}{13}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Algebraic approach to $SL_2(\mathbb {Z})$}{19}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Algebraic proof that $S,T$ generate $SL_2(\mathbb {Z})$ }{19}{subsection.2.3.1}
+\contentsline {chapter}{\numberline {3}Congruence subgroups of $SL_2(\mathbb {Z})$}{23}{chapter.3}
+\contentsline {section}{\numberline {3.1}The principal congruence subgroup $\Gamma (N)$}{23}{section.3.1}
+\contentsline {section}{\numberline {3.2}General congruence subgroups}{29}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}The congruence subgroups $\Gamma _0(N)$ and $\Gamma _1(N)$}{31}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}Fundamental domains for congruence subgroups}{34}{section.3.3}
+\contentsline {chapter}{\numberline {4}Non-congruence subgroups of $SL_2(\mathbb {Z})$}{38}{chapter.4}
+\contentsline {subsection}{\numberline {4.0.1}More examples of non congruence subgroups}{46}{subsection.4.0.1}
+\contentsline {subsection}{\numberline {4.0.2}Local versus index - a criterion}{47}{subsection.4.0.2}
+\contentsline {section}{\numberline {4.1}Conclusion}{50}{section.4.1}
+\contentsline {chapter}{References}{51}{chapter*.9}

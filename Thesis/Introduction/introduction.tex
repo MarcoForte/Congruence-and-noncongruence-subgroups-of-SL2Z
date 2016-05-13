@@ -1,0 +1,190 @@
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+
+%%% Thesis Introduction --------------------------------------------------
+\chapter{Preliminary group theory}
+\ifpdf
+    \graphicspath{{Introduction/IntroductionFigs/PNG/}{Introduction/IntroductionFigs/PDF/}{Introduction/IntroductionFigs/}}
+\else
+    \graphicspath{{Introduction/IntroductionFigs/EPS/}{Introduction/IntroductionFigs/}}
+\fi
+
+
+
+The level of this project is aimed at final year undergraduate mathematics students. Knowledge of basic group theory, number theory, complex numbers is assumed. We us some more specialised theory that readers may be unaware of or might need a quick refresh. So this prelimanary chapter contains definitions and results of this kind. \\
+
+\section{Group Actions}
+\begin{definition}\label{def:groupAction}
+A group action of a group $G$ on a set $A$ is the map from $G \times A$ to $A$ (written as $ g \cdot a$, for for all $g \in G$ and $a \in A$) satisfying the following properties:
+\begin{enumerate}
+\item $g_1\cdot(g_2 \cdot a) = (g_1g_2) \cdot s$  for all  $g_1, g_2 \in G, a \in A$, 
+\item $1 \cdot a = a$, for all $a \in A$
+\end{enumerate}
+The set $A$ is called a $G$-set.
+\end{definition}
+We often refer to this as $G$ is a group acting on a set $A$. The expression $g \cdot a $ will usually be written simply as $ga$ or $g(a)$.
+
+\begin{definition}
+Let $A$ be a $G$-set. The \textit{stabilizer} of $a \in A$ is the set, 
+$$ G_a = \{g \in G \, \vert \, g \cdot a = a \}$$
+\end{definition}
+
+\begin{proposition}
+Let $A$ be a $G$-set. The relation $~$ on $A$ defined by $a ~ b$ if and only if $b = g\cdot a $ for some $g \in G$ is an equivalence relation on $A$.
+\end{proposition}
+
+\begin{definition}
+The equivalence class of $a \in A$ is called the orbit of $a$.
+\end{definition}
+We using equivalence and orbit we often refer to the group explicitly, we say the points $a,b$ are $G$-equivalent and $a,b$ in the same $G$-orbit. \\
+\\
+
+\section{Isomorphism Theorems}
+\begin{theorem}{First Isomorphism Theorem}
+Let $\theta \, : G \rightarrow H$ be a group homomorphism. Then
+$$ G/ker\theta \cong Im \theta$$
+\end{theorem}
+
+\begin{theorem}{Third Isomorphism / Factor of a factor Theorem}
+Let $M,N$ be normal subgroups of the group $G$ with $M$ contained in $N$. Then,
+\begin{enumerate}
+\item $N/M$ is a normal subgroup of $G/M$ and
+\item $(G/M)/(N/M) \cong G/N$
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}{Fourth Isomorphism / Correspondence theorem}
+Let $N$ be a normal subgroup of $G$, let $H$ be a subgroup of $G$. The mapping $H \mapsto H/N$ defines a bijection between the set of subgroups of $G$ containing $N$ and the set of subgroups of $G/N$. Furthermore this correspondence preserves normality.
+\end{theorem}
+
+\section{Jordan-Holder Theorem}
+\begin{definition}{Internal / external direct product}
+
+A group $G$ is an (internal) direct product $H_1 \times \cdots \times H_n$ of subgroups $H_1, \ldots, H_n$ if 
+\begin{enumerate}
+\item $H_i \trianglelefteq G$ for $i = 1, \ldots , n$ and 
+\item every element $g \in G$ can be uniquely written in the form 
+$$g = h_1 \cdots h_n$$
+with $h_i \in H_i$.
+\end{enumerate}
+
+The external direct product is defined as the n-tuples $(h_1, \ldots, h_n)$ with $h_i \in H_i$, with multiplication
+$$ (g_1, \ldots, g_n)(h_1, \ldots h_n ) = (g_1 h_1,\ldots,g_n h_n)$$
+\end{definition}
+
+\begin{definition}
+A \textbf{normal series} for a group $G$ is a chain
+$$ G = G_0 \geq G_1 \geq \cdots \geq G_r = \{1\}$$
+of normal subgroups of $G$.
+\end{definition}
+
+\begin{definition}
+A \textbf{subnormal series} for a group $G$ is a chain
+$$ G = G_0 \geq G_1 \geq \cdots \geq G_r = \{1\}$$
+of subgroups of $G$ with $G_i \trianglelefteq G_{i+1}$.
+\end{definition}
+
+\begin{definition}
+Let 
+$$ G = G_0 \geq G_1 \geq \cdots \geq G_r = \{1\}$$
+and
+$$ H = H_0 \geq H_1 \geq \cdots \geq H_s = \{1\}$$
+be two normal (or subnormal series) for $G$.
+\begin{enumerate}[(a)]
+\item Then the second series is a \textbf{refinement} of the first if each group which appears in the first series also appears in the second.
+\item The two series are \textbf{isomorphic} if there exists a bijection from 
+$$\{G_0/G_1, G_1/G_2, \ldots , G_{r-1}/G_r \} \rightarrow \{ H_0/H_1, \ldots , H_{s-1}/H_s\}$$
+such that the quotient groups that correspond under the bijection are isomorphic. 
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+A normal series for a group $G$ with no repeated terms which cannot be refined except by repeating terms is called a \textbf{chief} series for $G$.
+\end{definition}
+
+
+\begin{definition}
+A subnormal series for a group $G$ with no repeated terms which cannot be refined except by repeating terms is called a \textbf{composition} series for $G$.
+\end{definition}
+
+\begin{theorem}{(Jordan-Holder Theorem).} If a group has a chief (or composition) series then any two chief (or composition) series are isomorphic.
+\end{theorem}
+
+\section{Free groups}
+The following exposition on free groups is taken directly from section 6.3 of the book Abstract Algebra \citep{dummit}. Only the relevant informal discussion is included here, there is much more detailed discussion available in the book. \\
+
+The basic idea of a free group $F(S)$ generated by a set $S$ is that there are no relations satisfied by any of the elements in $S$ ( $S$ is "free" of relations). For example, if $S$ is the
+set $\{a, b\}$ then the elements of the free group on the two generators $a$ and $b$ are of the
+form $a, aa, ab, abab, bab,$ etc., called words in $a$ and $b$, together with the inverses of
+these elements, and all these elements are considered distinct. If we group like terms
+together, then we obtain elements of the familiar form $a$, $b^-3$, $aba^-1b^2$ etc. Such
+elements are multiplied by concatenating their words (for example, the product of $aba$
+and $b^-1a^3b$ would simply be $abab^-1a^3b$). It is natural at the outset (even before we
+know $S$ is contained in some group) to simply define $F(S)$ to be the set of all words in $S$,
+where two such expressions are multiplied in $F(S)$ by concatenating them. \\
+\\
+One important property reflecting the fact that there are no relations that must be
+satisfied by the generators in $S$ is that any map from the set $S$ to a group $G$ can be
+uniquely extended to a homomorphism from the group $F(S)$ to $G$ (basically since we
+have specified where the generators must go and the images of all the other elements
+are uniquely determined by the homomorphism property - the fact that there are
+no relations to worry about means that we can specify the images of the generators
+arbitrarily). This is frequently referred to as the universal property of the free group
+and in fact characterizes the group $F(S)$.
+\\
+
+\begin{definition}
+The group $F(S)$ is called the free group on the set $S$. A group $F$ is a free
+group if there is some set $S$ such that $F = F(S)$ - in this case we call $S$ a set of free
+generators (or a free basis) of $F$. The cardinality of $S$ is called the rank of the free
+group.
+\end{definition}
+
+\begin{definition}
+Let $S$ be a subset of a group $G$ such that $G = \langle S \rangle$.\\
+A presentation for $G$ is a pair $(S, R)$, where $R$ is a set of words in $F(S)$ such that
+the normal closure of $\langle R \rangle$ in $F(S)$ (the smallest normal subgroup containing
+$\langle R \rangle$ ) equals the kernel of the homomorphism $\pi : F (S) \rightarrow G$ (where $\pi$ extends the identity map from $S$ to $S$). The elements of $S$ are called generators and those
+of $R$ are called relations of $G$.\\
+We say $G$ is \textbf{finitely generated} if there is a presentation $(S,R)$ such that $S$ is a finite set, and we say $G$ is finitely presented if there is a presentation $(S, R)$ with
+both $S$ and $R$ finite sets.
+\end{definition}
+
+The following comes from Chapter 11 of the book An introduction to the theory of groups \citep{rotmanFree}.
+\begin{definition}
+The free product $ G \star H$ of groups $G$ and $H$ is the set of elements of the form
+$$ g_1h_1 g_2h_2 \cdots g_r h_r, $$
+where $g_i$ in $G$ and $h_i$ in $H$, with $g_1$ and $h_r$ possibly equal to $e$, the identity element of $G$ and $H$.
+\end{definition}
+
+\begin{definition}
+Let $S$ be a subset of the group $G$.
+A \textbf{word} on $S$ is a sequence $w = (s_1,s_2,\ldots)$, where $s_i \in S \cup S^{-1} \cup \{1\}$ for all $i$, such that all $i =1$ from some point on. The \textbf{length} of $w = s_1^{a_1}\cdots s_n{a_n}$ is defined to be $n$.\\
+Since words contain only a finite number of letter before they become constant, we use the more suggestive notation for non-identity words,
+$$ w = s_1^{a_1}s_2^{a_2}\cdots s_n{a_n}$$
+where $s_i \in S$, $a_i = \pm 1$ or $0$, and $a_n = \pm 1$.
+\end{definition}
+\begin{definition}
+If $w =  s_1^{a_1}\cdots s_n{a_n}$ is a word, then it's \textbf{inverse} is the word $w^{-1} =  s_1^{-a_1}\cdots s_n{-a_n}$.
+\end{definition}
+\begin{definition}
+A word $w$ on $S$ is \textbf{reduced} if either $w$ is the identity, or $w = s_1^{a_1} s_2^{a_2}\cdots s_n{a_n} $, where all $s_i \in S$, all $a_i = \pm 1$, and $x$ and $x^{-1}$ are never adjacent.
+\end{definition}
+
+%%% ----------------------------------------------------------------------
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 

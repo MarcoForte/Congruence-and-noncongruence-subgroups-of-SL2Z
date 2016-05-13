@@ -1,0 +1,80 @@
+\newcommand{\PdfPsText}[2]{
+  \ifpdf
+     #1
+  \else
+     #2
+  \fi
+}
+
+\newcommand{\IncludeGraphicsH}[3]{
+  \PdfPsText{\includegraphics[height=#2]{#1}}{\includegraphics[bb = #3, height=#2]{#1}}
+}
+
+\newcommand{\IncludeGraphicsW}[3]{
+  \PdfPsText{\includegraphics[width=#2]{#1}}{\includegraphics[bb = #3, width=#2]{#1}}
+}
+
+\newcommand{\InsertFig}[3]{
+  \begin{figure}[!htbp]
+    \begin{center}
+      \leavevmode
+      #1
+      \caption{#2}
+      \label{#3}
+    \end{center}
+  \end{figure}
+}
+
+
+ 
+ 
+
+
+
+
+
+
+\newcommand{\sltz}{SL_2(\mathbb{Z})}
+\newcommand{\sltznz}[1][N]{SL_2(\mathbb{Z}/#1\mathbb{Z})}
+\newcommand{\psltznz}[1][N]{PSL_2(\mathbb{Z}/#1\mathbb{Z})}
+\newcommand{\psltz}{PSL_2(\mathbb{Z})}
+\newcommand{\sltr}{SL_2(\mathbb{R})}
+
+\newcommand{\pmi}{\{\pm I_2 \}}
+\newcommand{\abcd}{\left(\begin{array}{ c c } a & b \\ c & d \end{array} \right)}
+\newcommand{\sm}{\left(\begin{array}{ c c } 0 & -1 \\ 1 & 0 \end{array} \right)}
+\newcommand{\tm}[1][1]{\left(\begin{array}{ c c } 1 & #1 \\ 0 & 1 \end{array} \right)}
+\newcommand{\um}[1][1]{\left(\begin{array}{ c c } 1 & 0 \\ #1 & 1 \end{array} \right)}
+\newcommand{\mobh}{\text{M{\"o}b}(\mathcal{H})}
+
+\newcommand{\znz}[1][N]{\mathbb{Z}/#1\mathbb{Z}}
+
+
+\newcommand{\myqed}{$\square$}
+
+
+
+\makeatletter
+\newsavebox\myboxA
+\newsavebox\myboxB
+\newlength\mylenA
+
+\newcommand*\xoverline[2][0.75]{%
+    \sbox{\myboxA}{$\m@th#2$}%
+    \setbox\myboxB\null% Phantom box
+    \ht\myboxB=\ht\myboxA%
+    \dp\myboxB=\dp\myboxA%
+    \wd\myboxB=#1\wd\myboxA% Scale phantom
+    \sbox\myboxB{$\m@th\overline{\copy\myboxB}$}%  Overlined phantom
+    \setlength\mylenA{\the\wd\myboxA}%   calc width diff
+    \addtolength\mylenA{-\the\wd\myboxB}%
+    \ifdim\wd\myboxB<\wd\myboxA%
+       \rlap{\hskip 0.5\mylenA\usebox\myboxB}{\usebox\myboxA}%
+    \else
+        \hskip -0.5\mylenA\rlap{\usebox\myboxA}{\hskip 0.5\mylenA\usebox\myboxB}%
+    \fi}
+\makeatother
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "~/Documents/LaTeX/CUEDThesisPSnPDF/thesis"
+%%% End: 

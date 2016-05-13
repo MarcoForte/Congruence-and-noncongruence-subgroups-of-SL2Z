@@ -47,7 +47,7 @@ def plotPoints(points,title):
             plt.plot(x,y,'ro',markersize= 9)
     plt.title(title)
     fig = plt.gcf()
-    fig.savefig(str(np.random.randint(1000))+title+"1.png",dpi = 1000)
+    fig.savefig(str(np.random.randint(1000))+title+".png",dpi = 1000)
     plt.show()
 def T(x,y,n=1): return  x + n, y
 def S(x,y):  return (-x/(x**2+y**2)),  (y/(x**2+y**2))
